@@ -7,8 +7,8 @@ class CustomBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 44,
-      height: 44,
+      width: 53,
+      height: 55,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -23,7 +23,7 @@ class CustomBackButton extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           Icons.arrow_back_ios,
-          size: 20,
+          size: 25,
         ),
       ),
     );

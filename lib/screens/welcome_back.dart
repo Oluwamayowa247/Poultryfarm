@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:poultry_farm/common/common_button.dart';
 import 'package:poultry_farm/common/custom_container.dart';
+import 'package:poultry_farm/common/custom_text_field.dart';
 import 'package:poultry_farm/screens/hello_screen.dart';
 
 import '../common/custom_divider.dart';
@@ -70,24 +71,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: 64,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 15.0, left: 16),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  filled: true,
-                  fillColor: Color(0xFFE8ECF4),
-                  labelStyle: TextStyle(
-                    color: Color(0xFF1E232C),
-                    fontSize: 16.0,
-                    fontFamily: 'SpaceGrotesk',
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
+                padding: const EdgeInsets.only(right: 15.0, left: 16),
+                child: CustomTextField(
+                  hintText: 'Phone Number',
+                )),
             SizedBox(
               height: 50,
             ),
