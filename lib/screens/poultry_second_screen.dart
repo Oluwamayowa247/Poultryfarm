@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:poultry_farm/common/custom_back_button.dart';
 import 'package:poultry_farm/screens/welcome_back.dart';
 
 import '../common/button.dart';
 
-class PoultrySecondScreen extends StatelessWidget {
+class PoultrySecondScreen extends StatefulWidget {
   const PoultrySecondScreen({super.key});
 
+  @override
+  State<PoultrySecondScreen> createState() => _PoultrySecondScreenState();
+}
+
+class _PoultrySecondScreenState extends State<PoultrySecondScreen> {
+  // double progress = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -13,6 +20,12 @@ class PoultrySecondScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20, right: 280),
+              child: CustomBackButton(
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
             SizedBox(
               height: 40.0,
             ),

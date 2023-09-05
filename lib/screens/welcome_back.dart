@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:poultry_farm/common/common_button.dart';
+import 'package:poultry_farm/common/custom_container.dart';
+import 'package:poultry_farm/screens/hello_screen.dart';
+
+import '../common/custom_divider.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -91,13 +95,78 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.only(left: 16.0, right: 15),
               child: CommonButton(
                 buttonText: 'Send OTP',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => HelloScreen()),
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(
-              height: 98.08,
+              height: 90,
             ),
             Row(
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CustomDivider(),
+                Text(
+                  'Or Login with',
+                  style: TextStyle(
+                    color: Color(0xFF6A707C),
+                    fontSize: 14.73,
+                    fontFamily: 'SpaceGrotesk',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                CustomDivider(),
+              ],
+            ),
+            SizedBox(
+              height: 23,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CustomContainer(
+                  imgAsset: 'assets/images/facebook.png',
+                ),
+                CustomContainer(
+                  imgAsset: 'assets/images/google.png',
+                ),
+                CustomContainer(
+                  imgAsset: 'assets/images/apple.png',
+                )
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 62.0, left: 62),
+              child: RichText(
+                  text: TextSpan(
+                text: 'Don\'t have an account? ',
+                style: TextStyle(
+                  color: Color(0xFF6A707C),
+                  fontSize: 14,
+                  fontFamily: 'SpaceGrotesk',
+                  fontWeight: FontWeight.w600,
+                ),
+                children: [
+                  TextSpan(
+                    text: ' Register Now',
+                    style: TextStyle(
+                      color: Color(0xFFFFC100),
+                      fontSize: 14,
+                      fontFamily: 'SpaceGrotesk',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              )),
             )
           ],
         ),

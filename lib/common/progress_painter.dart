@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ProgressPainter extends CustomPainter {
@@ -7,16 +9,22 @@ class ProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
+      // ..strokeCap = StrokeCap.values[1]
       ..color = Colors.black
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 6.0;
+      ..style = PaintingStyle.values[1]; // Set the style to fill
 
-    double arcAngle = 2 * 3.1415926 * progress;
+    double centerX = size.width / 1.8;
+    double centerY = size.height / 2;
+    double radius = min(centerX, centerY);
+
+    double sweepAngle = 360.0 * progress; // Calculate the sweep angle
+
     canvas.drawArc(
-      Rect.fromCircle(center: size.center(Offset.zero), radius: size.width / 2),
-      -1.5708, // -90 degrees in radians (start at the top)
-      arcAngle,
-      false,
+      Rect.fromCircle(center: Offset(centerX, centerY), radius: radius),
+      -90.0 *
+          (pi / 180.0), // Start angle in radians (corresponds to -90 degrees)
+      sweepAngle * (pi / 180.0), // Sweep angle in radians
+      true,
       paint,
     );
   }

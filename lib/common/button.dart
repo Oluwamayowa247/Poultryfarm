@@ -10,19 +10,12 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
-          child: CustomPaint(
-            painter: ProgressPainter(
-              progress: progress,
-            ),
-          ),
-        ),
         Container(
-          width: 60,
-          height: 60,
+          width: 65,
+          height: 65,
           decoration: BoxDecoration(
             border: Border.all(
-              width: 5,
+              width: 1,
               color: Color(0xFFFFE07F),
             ),
             color: Color(0xFFFFE07F),
@@ -31,7 +24,7 @@ class Button extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(
-                width: 5,
+                width: 6,
                 color: Colors.white,
               ),
               color: Color(0xFFFFE07F),
@@ -49,6 +42,10 @@ class Button extends StatelessWidget {
             ),
           ),
         ),
+        // Positioned.(
+        //   child: CustomPaint(
+        //     painter: ProgressPainter(progress: progress),
+        //   ),
       ],
     );
   }
