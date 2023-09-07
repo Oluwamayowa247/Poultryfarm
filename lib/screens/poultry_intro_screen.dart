@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poultry_farm/common/button.dart';
+import 'package:poultry_farm/common/progress_button.dart';
 import 'package:poultry_farm/screens/poultry_second_screen.dart';
 
 class PoultryIntro extends StatefulWidget {

@@ -1,5 +1,10 @@
-image: assets/images/chick.png
-color: "#42a5f5"
-fill: true
-android: true
-ios: true 
+flutter_native_splash:
+  image: assets/images/chick.png
+  color: "#42a5f5"
+  android_12:
+    image: assets/images/chick.png
+    background_color: "#42a5f5"
+    foreground_color: "#42a5f5"
+  fill: true
+  android: true
+  ios: true 

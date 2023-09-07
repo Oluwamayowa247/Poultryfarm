@@ -3,6 +3,7 @@ import 'package:poultry_farm/common/common_button.dart';
 import 'package:poultry_farm/common/custom_back_button.dart';
 import 'package:poultry_farm/common/custom_divider.dart';
 import 'package:poultry_farm/common/custom_text_field.dart';
+import 'package:poultry_farm/screens/otp_screen.dart';
 
 import '../common/custom_container.dart';
 
@@ -54,7 +55,11 @@ class HelloScreen extends StatelessWidget {
               ),
               CommonButton(
                 buttonText: 'Send OTP',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return OTPScreen();
+                  }));
+                },
               ),
               SizedBox(
                 height: 29,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:poultry_farm/common/custom_back_button.dart';
 import 'package:poultry_farm/screens/welcome_back.dart';
 
-import '../common/button.dart';
+import '../common/progress_button.dart';
 
 class PoultrySecondScreen extends StatefulWidget {
   const PoultrySecondScreen({super.key});
