@@ -4,31 +4,45 @@ import 'package:flutter/services.dart';
 class OtpDigitsBox extends StatefulWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
-  const OtpDigitsBox(
-      {super.key, required this.controller, required this.focusNode});
+
+  const OtpDigitsBox({
+    Key? key,
+    required this.controller,
+    required this.focusNode,
+  }) : super(key: key);
 
   @override
   State<OtpDigitsBox> createState() => _OtpDigitsBoxState();
 }
 
 class _OtpDigitsBoxState extends State<OtpDigitsBox> {
+  List<FocusNode> focusNodes = List.generate(4, (_) => FocusNode());
   @override
   void initState() {
     super.initState();
     widget.controller.addListener(_onTextAdded);
-    //  widget.focusNode.addListener(_onTextDeleted);
+    widget.focusNode.addListener(_onTextDeleted);
   }
 
   @override
   void dispose() {
     widget.controller.removeListener(_onTextAdded);
-//    widget.focusNode.removeListener(_onTextDeleted);
+    widget.focusNode.removeListener(_onTextDeleted);
     super.dispose();
   }
 
   void _onTextAdded() {
-    if (widget.controller.text.length == 1) {
+    if (widget.controller.text.isNotEmpty) {
       FocusScope.of(context).nextFocus();
+    }
+  }
+
+  void _onTextDeleted() {
+    if (widget.controller.text.isEmpty) {
+      final currentFocusIndex = focusNodes.indexOf(widget.focusNode);
+      if (currentFocusIndex > 0) {
+        focusNodes[currentFocusIndex - 1].requestFocus();
+      }
     }
   }
 
@@ -46,14 +60,10 @@ class _OtpDigitsBoxState extends State<OtpDigitsBox> {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
-          color: Color(
-            0xFFFFC100,
-          ),
+          color: Color(0xFFFFC100),
         ),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(
-          8.42,
-        ),
+        borderRadius: BorderRadius.circular(8.42),
       ),
       child: TextField(
         focusNode: widget.focusNode,
@@ -61,8 +71,7 @@ class _OtpDigitsBoxState extends State<OtpDigitsBox> {
         keyboardType: TextInputType.number,
         inputFormatters: [
           LengthLimitingTextInputFormatter(1),
-          FilteringTextInputFormatter.allow(RegExp(r'[0-9]'),
-              replacementString: ''),
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
         ],
         decoration: InputDecoration(
           border: InputBorder.none,

@@ -1,15 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:poultry_farm/common/custom_back_button.dart';
 import 'package:poultry_farm/common/otp_digits_box.dart';
+//import 'package:poultry_farm/screens/hello_screen.dart';
+import 'package:poultry_farm/screens/verify_dialog.dart';
 
-class OTPScreen extends StatelessWidget {
+import '../common/common_button.dart';
+
+class OTPScreen extends StatefulWidget {
   const OTPScreen({super.key});
 
   @override
+  State<OTPScreen> createState() => _OTPScreenState();
+}
+
+class _OTPScreenState extends State<OTPScreen> {
+  final List<TextEditingController> controllers =
+      List.generate(4, (index) => TextEditingController());
+  final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
+
+  @override
+  void dispose() {
+    for (int i = 0; i < controllers.length; i++) {
+      controllers[i].dispose();
+      focusNodes[i].dispose();
+    }
+    super.dispose();
+  }
+
+  void printOTP() {
+    String otp = '';
+    for (int i = 0; i < controllers.length; i++) {
+      otp += controllers[i].text;
+    }
+    print("The OTP Code is $otp");
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final List<TextEditingController> controllers =
-        List.generate(4, (index) => TextEditingController());
-    final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -22,7 +49,9 @@ class OTPScreen extends StatelessWidget {
                 height: 20,
               ),
               CustomBackButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
               SizedBox(
                 height: 20,
@@ -59,6 +88,19 @@ class OTPScreen extends StatelessWidget {
                       focusNode: focusNodes[i],
                     ),
                 ],
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              CommonButton(
+                buttonText: 'Verify',
+                onTap: () {
+                  printOTP();
+                  showDialog(
+                    context: context,
+                    builder: (context) => VerifyDialog(),
+                  );
+                },
               ),
             ],
           ),
